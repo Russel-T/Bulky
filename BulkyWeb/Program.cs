@@ -2,9 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+/* This adds services to the container.
+ * When you add services, you're adding it to dependency injection.
+ * Therefore, these configured services can be used everywhere in the solution
+ */
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ApplicationDbContext>(options=> options.UseSqlServer(
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 var app = builder.Build();
