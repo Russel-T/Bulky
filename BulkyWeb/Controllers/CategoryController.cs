@@ -13,7 +13,7 @@ namespace BulkyWeb.Controllers
         public readonly ApplicationDbContext _db;
 
         /**
-         * CategoryController is a constructor
+         * CategoryController: a constructor
          * It has an implementation of db 
          * The implementation is then assigned to the local variable: _db
          * This allows us to use that implementation inside any other action method
@@ -23,14 +23,24 @@ namespace BulkyWeb.Controllers
             _db = db;
         }
 
+        /** 
+         * Index(): A list of Categories is retrieved from the database
+         * Which is then passed to the views in Category
+         * Location: Views -> Category -> Index.cshtml
+        */
         public IActionResult Index()
         {
-            /** A list of Categories is retrieved from the database
-             * Which is then passed to the views in Category
-             * Location: Views -> Category -> Index.cshtml
-             */
             List<Category> objCategoryList = _db.Categories.ToList();
             return View(objCategoryList);
+        }
+
+        /**
+         * Create(): method that allows user to create a category
+         * Location: Views -> Category -> Create.cshtml
+         */
+        public IActionResult Create()
+        {
+            return View();
         }
     }
 }
