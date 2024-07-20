@@ -42,5 +42,18 @@ namespace BulkyWeb.Controllers
         {
             return View();
         }
+
+        /**
+         * Create(Category obj): this is a POST method to add more Categories in the db
+         * _db.SaveChanges() allows the user to update the changes directly in the db
+         * This is called in the controller and when the user presses Submit
+         */
+        [HttpPost]
+        public IActionResult Create(Category obj)
+        {
+            _db.Categories.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index", "Category");
+        }
     }
 }
