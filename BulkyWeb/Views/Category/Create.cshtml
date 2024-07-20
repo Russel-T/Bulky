@@ -11,9 +11,15 @@
             <input asp-for="Name" class="form-control" />
         </div>
         <!--
-            This label and input field use the asp-for attribute with the DisplayOrder property.
-            This property is part of the Category model, located in the Models folder under Category.
-            The DisplayOrder value is retrieved from the database as the model is accessed through the Category controller.
+            How it works:
+                This label and input field use a tag helper: asp-for with the DisplayOrder property.
+                This property is part of the Category model, located in the Models folder under Category.
+                The DisplayOrder value is retrieved from the database as the model is accessed through the Category controller.
+
+            Usually, we put a text in between the label tags.
+            But since we are using a tag helper, we can manipulate on what text to be displayed.
+            It is in the Models -> Category.cs file.
+            Where we utilized DisplayName("TEXT HERE") as the text to be displayed
         -->
         <div class="mb-3 row p-1">
             <label asp-for="DisplayOrder" class="p-0"></label>
