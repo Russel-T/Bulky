@@ -47,13 +47,30 @@ namespace BulkyWeb.Controllers
          * Create(Category obj): this is a POST method to add more Categories in the db
          * _db.SaveChanges() allows the user to update the changes directly in the db
          * This is called in the controller and when the user presses Submit
+         * 
+         * ModelState.IsValid checks if the appropriate inputs are correct
+         * The constraints are given in the Category Controller.
+         * One of the constraints of a correct DisplayOrder input should be in the range of 1-100.
+         * This constraint was specified in the category controller:[Range(1, 100)]
+         * 
+         * This makes you go back to the website of the list : return RedirectToAction("Index", "Category");
          */
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            _db.Categories.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index", "Category");
+            //if (obj.Name == obj.DisplayOrder.ToString())
+            //{
+            //    ModelState.AddModelError("name", "The Display Order cannot exactly match the Name");
+            //}
+
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Category");
+            }
+            return View();
+
         }
     }
 }
