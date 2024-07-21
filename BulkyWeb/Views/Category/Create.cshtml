@@ -42,6 +42,17 @@
             </div>
         </div>
 
-
     </div>
 </form>
+
+<!--
+    Client Side validation script
+
+    For any partial view, the program will always look at Shared folder and match the files with the name
+    After the name is matched, then the javascript that is needed will be integrated within
+-->
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
