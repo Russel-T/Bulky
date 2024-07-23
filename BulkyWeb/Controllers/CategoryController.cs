@@ -34,6 +34,8 @@ namespace BulkyWeb.Controllers
             return View(objCategoryList);
         }
 
+        // CREATE:
+
         /**
          * Create(): method that allows user to create a category
          * Location: Views -> Category -> Create.cshtml
@@ -73,6 +75,7 @@ namespace BulkyWeb.Controllers
 
         }
 
+        // EDIT:
 
         public IActionResult Edit(int? id)
         {
@@ -103,6 +106,38 @@ namespace BulkyWeb.Controllers
             }
             return View();
 
+        }
+
+        // DELETE:
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();// or an error page
+            }
+            Category? categoryFromDb = _db.Categories.Find(id);
+            //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id==id);
+            //Category? categoryFromDb2 = _db.Categories.Find(id);
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryFromDb);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            Category? obj = _db.Categories.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
