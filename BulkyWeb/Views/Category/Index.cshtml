@@ -1,68 +1,65 @@
 ﻿<!-- This model is inherited by the CategoryController -->
 @model List<Category>
-@if (TempData["success"] != null)
-{
-    <h2>@TempData["success"]</h2>
-}
-<div class="container">
-    <div class="row pt-4 pb-3">
-        <div class="col-6">
-            <h2 class="text-primary">
-                Category List
-            </h2>
+
+    <div class="container">
+        <div class="row pt-4 pb-3">
+            <div class="col-6">
+                <h2 class="text-primary">
+                    Category List
+                </h2>
+            </div>
+            <div class="col-6 text-end">
+                <!--
+                    This anchor tag (<a>) is configured to point to the 'Create' action of the 'Category' controller.
+                    When clicked, it will trigger navigation to the Create.cshtml view associated with this action.
+                -->
+                <a asp-controller="Category" asp-action="Create" class="btn btn-primary" style="transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;" onmouseover="this.style.backgroundColor='#39FF14'; this.style.color='#000000'; this.style.boxShadow='0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #39FF14';" onmouseout="this.style.backgroundColor=''; this.style.color=''; this.style.boxShadow='';">
+                    <i class="bi bi-plus-square-fill"></i> Create New Category
+                </a>
+            </div>
+
         </div>
-        <div class="col-6 text-end">
-            <!--
-                This anchor tag (<a>) is configured to point to the 'Create' action of the 'Category' controller.
-                When clicked, it will trigger navigation to the Create.cshtml view associated with this action.
-            -->
-            <a asp-controller="Category" asp-action="Create" class="btn btn-primary" style="transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;" onmouseover="this.style.backgroundColor='#39FF14'; this.style.color='#000000'; this.style.boxShadow='0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14, 0 0 40px #39FF14';" onmouseout="this.style.backgroundColor=''; this.style.color=''; this.style.boxShadow='';">
-                <i class="bi bi-plus-square-fill"></i> Create New Category
-            </a>
-        </div>
-
-    </div>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>
-                    Category Name 1
-                </th>
-                <th>
-                    Display Order
-                </th>
-                <th>
-
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <!--
-                This block iterates through the list of models defined in the Model object.
-                The models are ordered by the 'DisplayOrder' property in ascending order.
-                For each model in this ordered list, it creates a table row (<tr>) with two cells (<td>):
-                - The first cell contains the model's 'Name'.
-                - The second cell contains the model's 'DisplayOrder'.
-
-                Both the Edit and Delete needs an ID to be passed on to know which to do the operation at
-            -->
-            @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
-            {
+        <table class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                    <td>@obj.Name</td>
-                    <td>@obj.DisplayOrder</td>
-                    <td>
-                        <div class="w-75 btn-group" role="group">
-                            <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
-                                <i class="bi bi-pencil-square"></i> Edit
-                            </a>
-                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
-                                <i class="bi bi-trash3-fill"></i> Delete
-                            </a>
-                        </div>
-                    </td>
+                    <th>
+                        Category Name 1
+                    </th>
+                    <th>
+                        Display Order
+                    </th>
+                    <th>
+
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                <!--
+                    This block iterates through the list of models defined in the Model object.
+                    The models are ordered by the 'DisplayOrder' property in ascending order.
+                    For each model in this ordered list, it creates a table row (<tr>) with two cells (<td>):
+                    - The first cell contains the model's 'Name'.
+                    - The second cell contains the model's 'DisplayOrder'.
+
+                    Both the Edit and Delete needs an ID to be passed on to know which to do the operation at
+                -->
+                @foreach (var obj in Model.OrderBy(u => u.DisplayOrder))
+                {
+                    <tr>
+                        <td>@obj.Name</td>
+                        <td>@obj.DisplayOrder</td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+                                <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                    <i class="bi bi-trash3-fill"></i> Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
