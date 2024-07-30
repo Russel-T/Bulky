@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BulkyWebRazor_Temp.Pages.Categories
 {
-    // In razor pages, you would need BindProperty to access it. Example would be POST method
+    //  In razor pages, you would need BindProperty to access it. Example would be POST method
     [BindProperties]
     public class CreateModel : PageModel
     {
