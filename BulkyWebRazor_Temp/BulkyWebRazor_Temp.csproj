@@ -9,6 +9,14 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
+    <None Remove="Models\" />
+    <None Remove="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
@@ -16,13 +24,5 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Data\" />
-    <None Remove="Views\Category\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Views\Category\" />
   </ItemGroup>
 </Project>
