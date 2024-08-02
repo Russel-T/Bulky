@@ -1,8 +1,8 @@
 ﻿using System;
-using BulkyWeb.Models;
+using Bulky.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BulkyWeb.Data
+namespace Bulky.DataAccess.Data
 {
     /* ApplicationDbContext: represents session with database
 	 * DbContext: A class from Entity Framework Core library
